@@ -57,7 +57,7 @@ function custom_tag_cloud_widget($args) {
 }
 
 
-/* Trim zeros in price decimals */
+/* Trim zeros in price decimals n */
 add_filter( 'woocommerce_price_trim_zeros', '__return_true' );
 
 /* Shop product subtitle */
