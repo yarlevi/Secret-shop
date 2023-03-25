@@ -224,10 +224,19 @@ add_filter( 'fw_github_api_url', '_fw_filter_github_api_url' );
 		 * Start the session before the content is sent to prevent the "headers already sent" warning
 		 * @internal
 		 */
+/*
 		function _action_fw_flash_message_backend_prepare() {
 			if ( apply_filters( 'fw_use_sessions', true ) && ! session_id()  ) {
 				session_start();
 			}
+		} */
+
+		function _action_fw_flash_message_backend_prepare() {
+		    if (apply_filters('fw_use_sessions', true) && !session_id()) {
+		        session_start();
+		        // ... session operations ...
+		        session_write_close();
+		    }
 		}
 
 		add_action( 'current_screen', '_action_fw_flash_message_backend_prepare', 9999 );
@@ -257,6 +266,8 @@ add_filter( 'fw_github_api_url', '_fw_filter_github_api_url' );
 				! session_id()
 			) {
 				session_start();
+		        // ... session operations ...
+		        session_write_close();
 			}
 		}
 
